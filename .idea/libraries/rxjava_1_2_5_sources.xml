@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="rxjava-1.2.5-sources">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/rxjava-1.2.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
