@@ -13,9 +13,10 @@ fun <T : Comparable<T>> List<T>.quickSort(): List<T> = when {
 }
 
 fun main(args: Array<String>) {
+    val r = Random()
     listOf(10, 100, 1000, 10000, 100000, 1000000)
             .asSequence()
-            .map { (1..it).map { (1..100).map { Random().nextInt(1000000000) } } }
+            .map { (1..it).map { (1..100).map { r.nextInt(1000000000) } } }
             .forEach { a ->
                 measureTime { a.forEach { it.sorted() } }
                 measureTime { a.forEach { it.quickSort() } }
