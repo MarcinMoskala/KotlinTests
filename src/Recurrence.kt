@@ -6,20 +6,15 @@ fun sum(a: Int, b: Int): Int = foldRange(a, b, 0, { i, j -> i + j })
 
 fun prod(a: Int, b: Int): Int = foldRange(a, b, 1, { i, j -> i * j })
 
-fun <T> async(f: () -> T): T {
-    var r: T? = null
-    thread { r = f() }.run()
-    return r ?: throw Error()
-}
-
 private tailrec fun foldRange(
         a: Int,
         b: Int,
         accumulator: Int,
         operation: (Int, Int) -> Int
-): Int =
-        if (a > b) accumulator
-        else foldRange(a + 1, b, operation(a, accumulator), operation)
+): Int = when {
+    a > b -> accumulator
+    else -> foldRange(a + 1, b, operation(a, accumulator), operation)
+}
 
 val fib: (Int) -> Int = memorise<Int, Int> { a ->
     if (a <= 2) 1
