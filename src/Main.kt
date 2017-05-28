@@ -20,25 +20,28 @@ private fun tryFewTimes(times: Int = 3, f: () -> Unit) {
             throw e
         }
     }
+
 }
 
 class DefaultMapTest {
     @Test
     fun mapWithDefaultTest() {
         assert((mapOf(1 to 1).withDefault { 1 } + (2 to 10))[3] == 1)
-        val note = Note("Some note", "Today thoughts", "...", listOf())
     }
 }
 
-data class Note(
-        var name: String?,
-        val title: String?,
-        private var contentField: String,
-        var tags: List<String>?
-) {
-    var content: String?
-        get() = contentField.trim()
-        set(value) {
-            contentField = value?.capitalize() ?: ""
-        }
+class Student(
+        val name: String,
+        val surname: String,
+        val passing: Boolean,
+        val grade: Double
+)
+
+fun main(args: Array<String>) {
+    val students = listOf(Student("A", "B", true, 22.3))
+
+students.filter { it.passing }
+        .also { println(it) }
+        .sortedBy { it.grade }
+            .take(10)
 }

@@ -21,4 +21,9 @@ fun main(args: Array<String>) {
                 measureTime { a.forEach { it.sorted() } }
                 measureTime { a.forEach { it.quickSort() } }
             }
+    bigger(1, 2)
+    "This is Sparta".map { it.toUpperCase() }.toString()
 }
+
+fun bigger(i: Int, j: Int) = if (i > j) i else j
+
